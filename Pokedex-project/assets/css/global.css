@@ -1,0 +1,26 @@
+body{
+    justify-items: center;
+    background-color: color(srgb 0.73 0.86 0.83)!important;
+}
+
+*{
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  box-sizing: border-box;
+}
+
+.content{
+    padding: 1rem;
+    justify-self: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.content h1{
+    margin: 0px;
+    padding-bottom: 1rem;
+}
+
+
