@@ -1,3 +1,4 @@
+
 function convertJsonToPokemonClass(json){
     let pokemonClass = new Pokemon();
 
@@ -8,9 +9,9 @@ function convertJsonToPokemonClass(json){
         pokemonClass.svg = json.sprites.other.dream_world.front_default.length > 0 ? json.sprites.other.dream_world.front_default : "https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png";
 
     return pokemonClass;
-}
+};
 
-
+let htmlControler = 0;
 //Passing the information from the pokemon details (api) to html
 function convertDataToHtmlList(pokemonDetails){
     let olListElement = document.getElementById("pokemons-ol-list");
@@ -20,47 +21,39 @@ function convertDataToHtmlList(pokemonDetails){
         let pokemonClass = convertJsonToPokemonClass(pokemon);
         let type2Html = pokemonClass.type2.length > 0 ? `<li class="type type-background-${pokemonClass.type}">${pokemonClass.type2}</li>` : '';
         pokemonClass.name = pokemonClass.name.charAt(0).toUpperCase() + pokemonClass.name.slice(1);
-        
 
            return `
            <li id="pokemon" class="pokemon box-shadow-${pokemonClass.type}">
                 <span class="number">#${pokemonClass.number_id}</span>
                 <span class="name">${pokemonClass.name}</span>
-
                 <div class="detail">
                     <ol class="types">
                         <li class="type type-background-${pokemonClass.type}">${pokemonClass.type}</li>
                         ${type2Html}
                     </ol>
-                    
                     <img class="pokemon-image" src="${pokemonClass.svg}" alt="${pokemonClass.name}">
                 </div>
             </li>
             `
     });
 
-    olListElement.innerHTML += htmlList.join(""); // html insertion         
-}
-
-
-
-
-
+    // DOM insertion on .pokemons-ol-list
+    htmlControler > 0 ? olListElement.insertAdjacentHTML('beforeend', htmlList.join("")) : olListElement.innerHTML += htmlList.join("");
+    htmlControler += 1
+};
 
 // Calling from pokemon-api.js for html listing on main page 
 createPokemonListing();
 
+// add an auto-load for scroll to 75% of the page, load more pokemons on listing
+let pokemonSidelist = document.getElementById("pokemon-sidelist");
+pokemonSidelist.addEventListener('scroll', function() {
+    const scrollTop = pokemonSidelist.scrollTop;
+    const scrollHeight = pokemonSidelist.scrollHeight;
+    const clientHeight = pokemonSidelist.clientHeight;
 
-
-// add a auto-load for scroll to 95% of the page
-window.addEventListener('scroll', function() {
-  let scrollPosition = window.pageYOffset;
-  let documentHeight = document.documentElement.scrollHeight;
-  let windowHeight = window.innerHeight;
-
-  // Verifica se o usuário chegou ao final da página
-  if (scrollPosition + windowHeight >= (documentHeight * 0.95)) {
+    if (scrollTop + clientHeight >= ((scrollHeight - 1) * 0.75)) {
         offset += limitSearch;
         createPokemonListing(offset);
-  }
+    }
 });

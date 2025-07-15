@@ -253,3 +253,14 @@
     transition: ease-in-out 0.5s;
     box-shadow: 0px 0px, 0.2em 0 5em rgb(255, 255, 255);
 }
+
+.pokemon-sidelist{
+    margin: 1rem;
+    width: 100%;
+    max-width: 67rem;
+    max-height: 38rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    border-radius: 3rem;
+    border: 1px solid black;
+}

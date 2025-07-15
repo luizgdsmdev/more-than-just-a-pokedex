@@ -10,18 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokedex</title>
+    <link rel="icon" href="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/54.svg" type="image/x-icon">
+    
+
+    <title>More than just a Pokedex</title>    
 </head>
-<body>
+    <body>
+        <div id="pokemon-sidelist" class="pokemon-sidelist">
+            <section class="content-pokemon-list">
+                <!-- <h1>Pokemon</h1> -->
+                <ol id="pokemons-ol-list" class="pokemons"></ol>
+            </section>
+        </div>
 
-<section class="content">
-    <h1>Pokedex list</h1>
-
-    <ol id="pokemons-ol-list" class="pokemons"></ol>
-</section>
-
-<script src="./assets/js/api/pokemon-api.js"></script>
-<script src="./assets/js/main.js"></script>
-<script src="./assets/js/pokemon-module.js"></script>
-</body>
+        <script src="./assets/js/api/pokemon-api.js"></script>
+        <script src="./assets/js/main.js"></script>
+        <script src="./assets/js/pokemon-module.js"></script>
+    </body>
 </html> 
