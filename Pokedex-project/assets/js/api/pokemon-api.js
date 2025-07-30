@@ -51,7 +51,9 @@ let createPokemonListing = (offset) =>{
     .catch((error) => error)
 };
 
-        
+
+
+//https://thenounproject.com/browse/icons/term/pokedex/
 
 
 
